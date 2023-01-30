@@ -1,0 +1,7 @@
+library(tableone)
+myVars<-c("followuptime","AGE","SEX","EDU","INCOME","SMOKE","DRINK","totall_MET","BMI","DMTIME","KFY","YDS","JZY","XZ","CHD","STROKE")
+catVars<-c("SEX","EDU","INCOME","SMOKE","DRINK","KFY","YDS","JZY","XZ","CHD","STROKE")
+tab<-CreateTableOne(vars = myVars,data=e2,factorVars = catVars)
+print(tab,showAllLevels=TRUE,catDigits = 1,contDigits = 1)
+tab<-CreateTableOne(vars = myVars,data=e2,factorVars = catVars,strata="logggt1")
+print(tab,showAllLevels=TRUE,catDigits = 1,contDigits = 1)

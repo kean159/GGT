@@ -223,7 +223,7 @@ forestplot(labeltext=as.matrix(m[,c(1:2,14)]),mean=m$v11,lower=m$v12,upper=m$v13
 
 #Supplementary Figure 1####
 #GGT
-hist(a$GGT,freq =F,breaks =500,xlim =c(0,200),ylim = c(0,0.04) )
+hist(a$GGT,freq =F,breaks =500,xlim =c(0,200),ylim = c(0,0.04),xlab = "Serum GGT,(U/L)" )
 xfit<-seq(min(a$GGT),max(a$GGT),by=0.1)
 yfit<-dnorm(xfit,mean(a$GGT),sd(a$GGT))
 lines(xfit,yfit,lwd=2)

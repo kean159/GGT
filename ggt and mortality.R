@@ -239,7 +239,7 @@ l<-read.xlsx("C:\\Supplementary figure 2.xlsx")
 forestplot(labeltext=as.matrix(l[,c(1:2)]),mean=l$v3,lower=l$v4,upper=l$v5,is.summary=c(T,T,T,rep(F,10),T,T,rep(F,30)),
            graph.pos=3,graphwidth=unit(100,"mm"),boxsize=0.2,line.margin=unit(0.5,"mm"),lineheight=unit(6,"mm"),
            col=fpColors(box = "grey0",lines = "grey0",zero="black"),colgap=unit(5,"mm"),txt_gp = fpTxtGp(title=gpar(cex=1.2),ticks=gpar(cex=1)),
-           title = "cancer mortality",zero=1,xticks=c(0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0),ci.vertices=T)
+           title = "specific-cause mortality",zero=1,xticks=c(0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0),ci.vertices=T)
 
 
 

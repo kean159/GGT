@@ -1,4 +1,4 @@
-a<-read.xlsx("C:\\GGT data.xlsx")
+a<-read.xlsx("C:\\JDB-2022-574 example dataset.xlsx")
 #Table 1####
 library(tableone)
 myVars<-c("followuptime","AGE","SEX","EDU","INCOME","SMOKE","DRINK","totall_MET","BMI","DMTIME","KFY","YDS","JZY","XZ","CHD","STROKE")
@@ -145,7 +145,6 @@ model3<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+
 model3
 
 #Supplementary table 5####
-f<-read.xlsx("C:\\Supplementary table5.xlsx")
 #death
 table(f$death,f$logggt1)
 model1<-coxph(Surv(time,death)~logggt1+AGE+SEX,data=f) %>% summary()
@@ -205,7 +204,6 @@ P3
 
 #Figuer 2####
 library(forestplot)
-m<-read.xlsx("C:\\Figure 2.xlsx")
 forestplot(labeltext=as.matrix(m[,c(1:2,6)]),mean=m$v3,lower=m$v4,upper=m$v5,is.summary=c(T,T,rep(F,10),T,rep(F,10),T,rep(F,10),T,rep(F,10),T,rep(F,10),T,rep(F,10)),
            graph.pos=3,graphwidth=unit(70,"mm"),boxsize=0.2,line.margin=unit(0.5,"mm"),lineheight=unit(5,"mm"),
            col=fpColors(box = "grey0",lines = "grey0",zero="black"),colgap=unit(5,"mm"),txt_gp = fpTxtGp(title=gpar(cex=1.2),ticks=gpar(cex=1)),
@@ -221,6 +219,12 @@ forestplot(labeltext=as.matrix(m[,c(1:2,14)]),mean=m$v11,lower=m$v12,upper=m$v13
            col=fpColors(box = "grey0",lines = "grey0",zero="black"),colgap=unit(5,"mm"),txt_gp = fpTxtGp(title=gpar(cex=1.2),ticks=gpar(cex=1)),
            title = "cancer mortality",zero=1,xticks=c(0.5,1.0,1.5,2.0,2.5,3.0),ci.vertices=T)
 
+#Supplementary Figure 2####
+forestplot(labeltext=as.matrix(l[,c(1:2)]),mean=l$v3,lower=l$v4,upper=l$v5,is.summary=c(T,T,T,rep(F,10),T,T,rep(F,30)),
+           graph.pos=3,graphwidth=unit(100,"mm"),boxsize=0.2,line.margin=unit(0.5,"mm"),lineheight=unit(6,"mm"),
+           col=fpColors(box = "grey0",lines = "grey0",zero="black"),colgap=unit(5,"mm"),txt_gp = fpTxtGp(title=gpar(cex=1.2),ticks=gpar(cex=1)),
+           title = "specific-cause mortality",zero=1,xticks=c(0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0),ci.vertices=T)
+
 #Supplementary Figure 1####
 #GGT
 hist(a$GGT,freq =F,breaks =500,xlim =c(0,200),ylim = c(0,0.04),xlab = "Serum GGT,(U/L)" )
@@ -233,13 +237,5 @@ hist(a$logggt,freq =F,breaks = 30,ylim = c(0,0.8),main = "",xlab = "Log-transfor
 xfit<-seq(min(a$logggt),max(a$logggt),by=0.1)
 yfit<-dnorm(xfit,mean(a$logggt),sd(a$logggt))
 lines(xfit,yfit,lwd=2)
-
-#Supplementary Figure 2####
-l<-read.xlsx("C:\\Supplementary figure 2.xlsx")
-forestplot(labeltext=as.matrix(l[,c(1:2)]),mean=l$v3,lower=l$v4,upper=l$v5,is.summary=c(T,T,T,rep(F,10),T,T,rep(F,30)),
-           graph.pos=3,graphwidth=unit(100,"mm"),boxsize=0.2,line.margin=unit(0.5,"mm"),lineheight=unit(6,"mm"),
-           col=fpColors(box = "grey0",lines = "grey0",zero="black"),colgap=unit(5,"mm"),txt_gp = fpTxtGp(title=gpar(cex=1.2),ticks=gpar(cex=1)),
-           title = "specific-cause mortality",zero=1,xticks=c(0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0),ci.vertices=T)
-
 
 

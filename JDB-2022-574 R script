@@ -1,4 +1,4 @@
-a<-read.xlsx("C:\\JDB-2022-574 example dataset.xlsx")
+a<-read.csv("C:\\JDB-2022-574 example dataset.csv")
 #Table 1####
 library(tableone)
 myVars<-c("followuptime","AGE","SEX","EDU","INCOME","SMOKE","DRINK","totall_MET","BMI","DMTIME","KFY","YDS","JZY","XZ","CHD","STROKE")

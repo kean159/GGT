@@ -36,6 +36,33 @@ model2
 model3<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+JZY+DMTIME+KFY+YDS,data=a)%>% summary()
 model3
 
+#Table 3####
+e<-a[a$BMI>28,]
+#death
+table(e$death,e$logggt1)
+model1<-coxph(Surv(time,death)~logggt1+AGE+SEX,data=e) %>% summary()
+model1
+model2<-coxph(Surv(time,death)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE,data=e) %>% summary()
+model2
+model3<-coxph(Surv(time,death)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE+DMTIME+KFY+YDS,data=e) %>% summary()
+model3
+#CVD
+table(e$CVDdeath,e$logggt1)
+model1<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX,data=e) %>% summary()
+model1
+model2<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE,data=e) %>% summary()
+model2
+model3<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE+DMTIME+KFY+YDS,data=e) %>% summary()
+model3
+#cancer
+table(e$cancerdeath,e$logggt1)
+model1<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX,data=e) %>% summary()
+model1
+model2<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET,data=e) %>% summary()
+model2
+model3<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+DMTIME+KFY+YDS,data=e) %>% summary()
+model3
+
 #Supplementary Table 1####
 b<-a[a$time>730,]
 #death
@@ -118,33 +145,6 @@ model3<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+
 model3
 
 #Supplementary table 4####
-e<-a[a$BMI>28,]
-#death
-table(e$death,e$logggt1)
-model1<-coxph(Surv(time,death)~logggt1+AGE+SEX,data=e) %>% summary()
-model1
-model2<-coxph(Surv(time,death)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE,data=e) %>% summary()
-model2
-model3<-coxph(Surv(time,death)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE+DMTIME+KFY+YDS,data=e) %>% summary()
-model3
-#CVD
-table(e$CVDdeath,e$logggt1)
-model1<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX,data=e) %>% summary()
-model1
-model2<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE,data=e) %>% summary()
-model2
-model3<-coxph(Surv(time,CVDdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+CHD+STROKE+DMTIME+KFY+YDS,data=e) %>% summary()
-model3
-#cancer
-table(e$cancerdeath,e$logggt1)
-model1<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX,data=e) %>% summary()
-model1
-model2<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET,data=e) %>% summary()
-model2
-model3<-coxph(Surv(time,cancerdeath)~logggt1+AGE+SEX+EDU+INCOME+SMOKE+DRINK+BMI+totall_MET+DMTIME+KFY+YDS,data=e) %>% summary()
-model3
-
-#Supplementary table 5####
 #death
 table(f$death,f$logggt1)
 model1<-coxph(Surv(time,death)~logggt1+AGE+SEX,data=f) %>% summary()
